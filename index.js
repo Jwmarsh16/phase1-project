@@ -4,6 +4,10 @@ let equipment = [];
 
 document.addEventListener("DOMContentLoaded", function() {
     fetchAllEquipment();
+
+    document.getElementById("sort-attack").addEventListener("click", sortByAttack)
+    document.getElementById("sort-defense").addEventListener("click", sortByDefense)
+    document.getElementById("sort-name").addEventListener("click", sortByName)
 });
 
 function fetchAllEquipment() {
@@ -18,6 +22,7 @@ function fetchAllEquipment() {
 }
 
 function loopInAttributes() {
+    equipmentListDiv.innerHTML = ""
     equipment.forEach(item => addAttributes(item));
 }
 
@@ -68,6 +73,23 @@ function addAttributes(item){
     div.appendChild(h5)
     equipmentListDiv.appendChild(div)
 }
+
+function sortByAttack(){
+    equipment.sort((a, b) => (b.attack || 0) - (a.attack || 0));
+    loopInAttributes()
+}
+
+function sortByDefense() {
+    equipment.sort((a, b) => (b.defense || 0) - (a.defense || 0));
+    loopInAttributes();
+}
+
+function sortByName() {
+    equipment.sort((a, b) => a.name.localeCompare(b.name));
+    loopInAttributes();
+}
+
+
 
 
 
