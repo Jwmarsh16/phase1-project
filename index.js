@@ -20,6 +20,11 @@ function loopInAttributes() {
     equipment.forEach(item => addAttributes(item))
 }
 
+function formatProperties(properties) {
+    return Object.entries(properties)
+    .map(([key, value]) => `${key}: ${value !== null ? value : 'N/A' }`)
+    .join(', ')
+}
 
 
 function addAttributes(item){
@@ -48,10 +53,18 @@ function addAttributes(item){
     } else {h4.textContent = ""}
     })
 
+    const h5 = document.createElement("h5")
+    div.addEventListener("click", () => {
+        if (h5.textContent === "") {
+        h5.textContent = "Stats: " + formatProperties(item.properties);
+    } else {h5.textContent = ""}
+    })
+
     
     div.appendChild(h3)
     div.appendChild(img)
     div.appendChild(h4)
+    div.appendChild(h5)
     equipmentListDiv.appendChild(div)
 }
 
