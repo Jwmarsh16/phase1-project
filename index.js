@@ -12,14 +12,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function fetchAllEquipment() {
     fetch("https://botw-compendium.herokuapp.com/api/v3/compendium/category/equipment")
-        .then(resp => resp.json())
-        .then(data => {
-            equipment = equipment.concat(data.data);
-            loopInAttributes();
-        })
+    .then(resp => resp.json())
+    .then(data => {
+        equipment = data.data.map(item => ({
+            ...item,
+            attack: item.properties?.attack || 0,  // Ensure attack property is present
+            defense: item.properties?.defense || 0  // Ensure defense property is present
+        }));
+    loopInAttributes();
+})
         .catch(error => console.error("Error fetching equipment data:", error));
-       
-}
+}      
 
 function loopInAttributes() {
     equipmentListDiv.innerHTML = ""
