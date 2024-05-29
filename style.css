@@ -1,0 +1,21 @@
+
+#equipment-list div {
+    position: relative;
+    margin: 0px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+#equipment-list h3 {
+    margin: 5px;
+    padding: 0;
+}
+
+.mouse-img {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    display: none;
+}
