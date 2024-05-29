@@ -16,8 +16,8 @@ function fetchAllEquipment() {
     .then(data => {
         equipment = data.data.map(item => ({
             ...item,
-            attack: item.properties?.attack || 0,  // Ensure attack property is present
-            defense: item.properties?.defense || 0  // Ensure defense property is present
+            attack: item.properties?.attack || 0,  
+            defense: item.properties?.defense || 0  
         }));
     loopInAttributes();
 })
