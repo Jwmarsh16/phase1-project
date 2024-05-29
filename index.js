@@ -20,6 +20,8 @@ function loopInAttributes() {
     equipment.forEach(item => addAttributes(item))
 }
 
+
+
 function addAttributes(item){
     const div = document.createElement('div')
     const h3 = document.createElement("h3")
@@ -41,7 +43,9 @@ function addAttributes(item){
 
     const h4 = document.createElement("h4")
     div.addEventListener("click", () => {
+        if (h4.textContent === "") {
         h4.textContent = "Common Locations: " + item.common_locations;
+    } else {h4.textContent = ""}
     })
 
     
