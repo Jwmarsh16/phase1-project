@@ -1,5 +1,5 @@
 
-const equipmentListDiv = document.getElementById("equipment-list")
+const equipmentListDiv = document.getElementById("equipment-list");
 let equipment = [];
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -13,17 +13,18 @@ function fetchAllEquipment() {
             equipment = equipment.concat(data.data);
             loopInAttributes();
         })
+        .catch(error => console.error("Error fetching equipment data:", error));
        
 }
 
 function loopInAttributes() {
-    equipment.forEach(item => addAttributes(item))
+    equipment.forEach(item => addAttributes(item));
 }
 
 function formatProperties(properties) {
     return Object.entries(properties)
     .map(([key, value]) => `${key}: ${value !== null ? value : 'N/A' }`)
-    .join(', ')
+    .join(', ');
 }
 
 
